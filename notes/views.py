@@ -22,7 +22,7 @@ def send_to_firebase(url, data):
     except:
         pass  # ignore errors
 
-def signup(request):
+"""def signup(request):
     if request.method == "POST":
         fullname = request.POST.get("fullname").replace(" ", "_")
         class_name = request.POST.get("class_name").lower()
@@ -52,4 +52,30 @@ def signup(request):
         response.set_cookie("user_info",json.dumps(user_data),max_age=314496000)
         return response
         
-    return render(request, "signup.html")
+    return render(request, "signup.html")"""
+def signup(request):
+    if request.method == "POST":
+        fullname = request.POST.get("fullname").replace(" ", "_")
+        class_name = request.POST.get("class_name").lower()
+        sex = request.POST.get("sex")
+
+        if class_name == "student":
+            user_data = {
+                fullname: {"fullname": fullname, "sex": sex, "classcaptain": "none"}
+            }
+            url = f"{FIREBASE_URL}/students/{class_name}.json"
+        else:
+            user_data = {fullname: {"fullname": fullname, "sex": sex}}
+            url = f"{FIREBASE_URL}/teachers/.json"
+
+        # Directly send without threading
+        try:
+            requests.patch(url, json=user_data, timeout=5)
+        except requests.RequestException:
+            pass
+
+        response = redirect("/index/")
+        response.set_cookie("user_info", json.dumps(user_data), max_age=314496000)
+        return response
+
+    return render(request, "signup.html")    
