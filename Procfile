@@ -1,1 +1,1 @@
-web: gunicorn maya.wsgi
+web: python manage.py migrate && python manage.py collectstatic --noinput && gunicorn maya.wsgi
