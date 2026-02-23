@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>MAYAEDU</title
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+  <section id="home" class="header">
+  <img class="logo" src="{% static 'new-logo.jpg' %}">
+    <nav>
+      <div class="nav-links">
+        <ul>
+          <li><a href="{% url 'index' %}">HOME</a></li>
+          <li><a href="{% url 'course' %}">COURSE</a></li>
+          <li><a href="{% url 'about' %}">ABOUT</a></li>
+          <li><a href="{% url 'contact' %}">CONTACT</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+<div class="text-box">
+  <h1>WELCOME TO OUR PLANET</h1>
+  <P>where we develop student on their basic activities</P>
+  <a class="btn" href="{% url 'signup' %}">Signup now</a>
+</div>
+    
+  </section>
+  
+  <section class="cour">
+    <h1>course we offer</h1>
+    <p>our channel list</p>
+    <div class="row">
+    <div class="course-col">
+    
+      <h3>Learn html</h3>
+      <p>
+        training student on how improve their basic skills in hyper text markup language(HTML)
+      </p>
+     </div>
+     <div class="course-col">
+     <h3>Learn css</h3>
+        <p>
+        training student on how improve their basic skills in cyber stylesheet(CSS)
+        </p>
+      </div>
+      <div class="course-col">
+      
+            <h3>Learn js</h3>
+      <p>
+        training student on how improve their basic skills in JAVA SCRIPT(JS)
+      </div>
+      </p>
+    </section>
+    
+    <section class="bl">
+    <h1>BEGINERS TO PRO LESSON</h1>
+    <p>our series training stundent developing them guding them in their various activities<p/>
+    </section>
+      
+    </div>
+</body>
+</html>
